@@ -7,8 +7,8 @@ API for generating spatiotemporal grid cells, processing zonal metrics (vector/r
 
 ### 🚀 How to Install
 
-git clone [https://github.com/seu-usuario/fillcell-python.git](https://github.com/seu-usuario/fillcell-python.git)
-cd fillcell-python
+git clone [https://github.com/labmi-inpe/e-cube-brazil.git](https://github.com/labmi-inpe/e-cube-brazil.git)
+cd e-cube-brazil
 pip install -r requirements.txt
 
 ### 🛠️ Pipeline Execution
