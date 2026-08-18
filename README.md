@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/logo.png" alt="E-Cube Brasil Logo" width="300">
+  <img src="docs/logo-e-cube-brazil.PNG" alt="E-Cube Brasil Logo" width="300">
 </p>
 ---
 
