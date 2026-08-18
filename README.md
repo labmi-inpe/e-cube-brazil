@@ -7,7 +7,6 @@ API for generating spatiotemporal grid cells, processing zonal metrics (vector/r
 
 ### 🚀 How to Install
 
-```bash
 git clone [https://github.com/seu-usuario/fillcell-python.git](https://github.com/seu-usuario/fillcell-python.git)
 cd fillcell-python
 pip install -r requirements.txt
@@ -15,7 +14,6 @@ pip install -r requirements.txt
 ### 🛠️ Pipeline Execution
 
 1. Generate Cellular Grid and GPKGs
-```bash
 python scripts/main.py scripts/config.yaml
 
 2. Build NetCDF Data Cubes
