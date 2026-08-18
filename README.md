@@ -1,7 +1,6 @@
 <p align="center">
-  <img src="docs/logo-e-cube-brazil.PNG" alt="E-Cube Brasil Logo" width="300">
+  <img src="docs/logo-e-cube-brazil.PNG" alt="E-Cube Brasil Logo" width="400">
 </p>
----
 
 # E-Cube Brazil
 E-Cube Brasil is a Python framework for spatio-temporal land use analysis. It generates cellular space grids, computes zonal raster/vector metrics, exports 3D topology, builds NetCDF datacubes, and auto-generates STAC catalogs with datacube extensions for environmental modeling and scenario simulation.
