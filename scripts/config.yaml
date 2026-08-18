@@ -1,0 +1,156 @@
+# ==============================================================================
+# CONFIGURAÇÃO DO FILLCELL PYTHON - E-BDC / LUCCME / E-CUBE BRASIL
+# Estrutura: GPKGs/Layers Isolados por Ano/Cenário com Nomes de Variáveis Estáticos
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. ESPAÇO CELULAR (GRADE BASE)
+# ------------------------------------------------------------------------------
+cellular_space:
+  mode: "create"                                                                # Opções: "create" ou "use_existing"
+  limit_shp: "D:/INPE/INPE2026/e-BDC/Devo/creator_cs/fillcell_python/dados/limite_biomas_ibge_epsg_5880.shp"
+  resolution: 50000                                                             # Resolução em metros (50 km)
+  xy: ["col", "row"]
+  zero: "bottom"
+  clip: "mask"
+  id_field: "id"
+
+# ------------------------------------------------------------------------------
+# 2. SAÍDAS DE DADOS (GPKGs TEMPORAIS E POR CENÁRIO)
+# ------------------------------------------------------------------------------
+outputs:
+  # ===========================================================================
+  # A. DADOS INICIAIS
+  # ===========================================================================
+  - target_gpkg: "dados/observed/ecube_2015.gpkg"
+    layer_name: "cs_2015"
+    keep_only_updated: false
+    fill_operations:
+      - type: "raster"
+        method: "categorical"
+        source: "D:/INPE/INPE2026/e-BDC/Devo/creator_cs/fillcell_python/dados/land_use_ibge_2015_epsg_5880.tif"
+        out_prefix: "lu_"                                                       # Prefixos limpos sem o ano (ex: lu_1, lu_2)
+        n_processes: 4
+
+      - type: "vector"
+        method: "distance"
+        source: "D:/INPE/INPE2026/e-BDC/Devo/creator_cs/fillcell_python/dados/roads_epsg_5880.shp"
+        out_column: "dist_roads"
+
+      - type: "vector"
+        method: "area"
+        source: "D:/INPE/INPE2026/e-BDC/Devo/creator_cs/fillcell_python/dados/pall_2015_epsg_5880.shp"
+        out_column: "pall"
+
+  # ---------------------------------------------------------------------------
+  # ATUALIZAÇÃO: Variaveis Dinâmicas
+  # ---------------------------------------------------------------------------
+  - target_gpkg: "dados/observed/ecube_2018.gpkg"
+    layer_name: "cs_2018"
+    keep_only_updated: false
+    fill_operations:
+      - type: "vector"
+        method: "area"
+        source: "D:/INPE/INPE2026/e-BDC/Devo/creator_cs/fillcell_python/dados/pall_2018_epsg_5880.shp"
+        out_column: "pall"
+
+  - target_gpkg: "dados/observed/ecube_2020.gpkg"
+    layer_name: "cs_2020"
+    keep_only_updated: false
+    fill_operations:
+      - type: "raster"
+        method: "categorical"
+        source: "D:/INPE/INPE2026/e-BDC/Devo/creator_cs/fillcell_python/dados/land_use_ibge_2020_epsg_5880.tif"
+        out_prefix: "lu_"
+        n_processes: 4
+
+      - type: "vector"
+        method: "distance"
+        source: "D:/INPE/INPE2026/e-BDC/Devo/creator_cs/fillcell_python/dados/roads_epsg_5880.shp"
+        out_column: "dist_roads"
+
+      - type: "vector"
+        method: "area"
+        source: "D:/INPE/INPE2026/e-BDC/Devo/creator_cs/fillcell_python/dados/pall_2020_epsg_5880.shp"
+        out_column: "pall"
+
+  # ===========================================================================
+  # B. CENÁRIO VE (Transição Ecológica)
+  # ===========================================================================
+  - target_gpkg: "dados/scenarios/VE/ecube_2027.gpkg"
+    layer_name: "cs_2027"
+    keep_only_updated: false
+    fill_operations:
+      - type: "vector"
+        method: "distance"
+        source: "D:/INPE/INPE2026/e-BDC/Devo/creator_cs/fillcell_python/dados/roads_Scenario_VE_2027_epsg_5880.shp"
+        out_column: "dist_roads"
+
+  - target_gpkg: "dados/scenarios/VE/ecube_2030.gpkg"
+    layer_name: "cs_2030"
+    keep_only_updated: false
+    fill_operations:
+      - type: "vector"
+        method: "area"
+        source: "D:/INPE/INPE2026/e-BDC/Devo/creator_cs/fillcell_python/dados/pall_Scenario_VE_2030_epsg_5880.shp"
+        out_column: "pall"
+
+  - target_gpkg: "dados/scenarios/VE/ecube_2035.gpkg"
+    layer_name: "cs_2035"
+    keep_only_updated: false
+    fill_operations:
+      - type: "vector"
+        method: "distance"
+        source: "D:/INPE/INPE2026/e-BDC/Devo/creator_cs/fillcell_python/dados/roads_Scenario_VE_2035_epsg_5880.shp"
+        out_column: "dist_roads"
+
+  # ===========================================================================
+  # C. CENÁRIO CV (Crescimento Verde)
+  # ===========================================================================
+  - target_gpkg: "dados/scenarios/CV/ecube_2027.gpkg"
+    layer_name: "cs_2027"
+    keep_only_updated: false
+    fill_operations:
+      - type: "vector"
+        method: "distance"
+        source: "D:/INPE/INPE2026/e-BDC/Devo/creator_cs/fillcell_python/dados/roads_Scenario_CV_2027_epsg_5880.shp"
+        out_column: "dist_roads"
+
+  - target_gpkg: "dados/scenarios/CV/ecube_2030.gpkg"
+    layer_name: "cs_2030"
+    keep_only_updated: false
+    fill_operations:
+      - type: "vector"
+        method: "area"
+        source: "D:/INPE/INPE2026/e-BDC/Devo/creator_cs/fillcell_python/dados/pall_Scenario_CV_2030_epsg_5880.shp"
+        out_column: "pall"
+
+  - target_gpkg: "dados/scenarios/CV/ecube_2035.gpkg"
+    layer_name: "cs_2035"
+    keep_only_updated: false
+    fill_operations:
+      - type: "vector"
+        method: "distance"
+        source: "D:/INPE/INPE2026/e-BDC/Devo/creator_cs/fillcell_python/dados/roads_Scenario_CV_2035_epsg_5880.shp"
+        out_column: "dist_roads"
+
+  # ===========================================================================
+  # D. CENÁRIO TE (Tendencial)
+  # ===========================================================================
+  - target_gpkg: "dados/scenarios/TE/ecube_2027.gpkg"
+    layer_name: "cs_2027"
+    keep_only_updated: false
+    fill_operations:
+      - type: "vector"
+        method: "distance"
+        source: "D:/INPE/INPE2026/e-BDC/Devo/creator_cs/fillcell_python/dados/roads_Scenario_TE_2027_epsg_5880.shp"
+        out_column: "dist_roads"
+
+  - target_gpkg: "dados/scenarios/TE/ecube_2035.gpkg"
+    layer_name: "cs_2035"
+    keep_only_updated: false
+    fill_operations:
+      - type: "vector"
+        method: "distance"
+        source: "D:/INPE/INPE2026/e-BDC/Devo/creator_cs/fillcell_python/dados/roads_Scenario_TE_2035_epsg_5880.shp"
+        out_column: "dist_roads"
