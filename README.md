@@ -1,3 +1,15 @@
+<p align="center">
+  <img src="docs/logo.png" alt="E-Cube Brasil Logo" width="300">
+</p>
+
+<h1 align="center">E-Cube Brasil</h1>
+
+<p align="center">
+  <b>Plataforma em Python para geração de espaços celulares espaço-temporais e cubos de dados para modelagem ambiental.</b>
+</p>
+
+---
+
 # E-Cube Brazil
 E-Cube Brasil is a Python framework for spatio-temporal land use analysis. It generates cellular space grids, computes zonal raster/vector metrics, exports 3D topology, builds NetCDF datacubes, and auto-generates STAC catalogs with datacube extensions for environmental modeling and scenario simulation.
 
