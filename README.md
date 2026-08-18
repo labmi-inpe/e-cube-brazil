@@ -11,3 +11,26 @@ API for generating spatiotemporal grid cells, processing zonal metrics (vector/r
 git clone [https://github.com/seu-usuario/fillcell-python.git](https://github.com/seu-usuario/fillcell-python.git)
 cd fillcell-python
 pip install -r requirements.txt
+
+### 🛠️ Pipeline Execution
+
+1. Generate Cellular Grid and GPKGs
+```bash
+python scripts/main.py scripts/config.yaml
+
+2. Build NetCDF Data Cubes
+python scripts/run_conversion.py
+
+3. Generate STAC Catalog
+python scripts/build_stac_catalog.py
+
+Code Import Adjustments
+When renaming the package folder or organizing scripts inside the scripts/ directory, update the import statements at the beginning of your scripts (such as main.py and run_conversion.py):
+
+# In scripts/main.py
+from cellular_space import CellularSpacePy, generate_cellularspace_terrame_like
+from raster_metrics import apply_raster_metrics
+from vector_metrics import apply_vector_metrics
+
+# In scripts/run_conversion.py
+from gpkg_to_netcdf import build_netcdf_cube_from_annual_gpkgs
