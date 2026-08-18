@@ -1,13 +1,6 @@
 <p align="center">
   <img src="docs/logo.png" alt="E-Cube Brasil Logo" width="300">
 </p>
-
-<h1 align="center">E-Cube Brasil</h1>
-
-<p align="center">
-  <b>Plataforma em Python para geração de espaços celulares espaço-temporais e cubos de dados para modelagem ambiental.</b>
-</p>
-
 ---
 
 # E-Cube Brazil
