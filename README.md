@@ -22,13 +22,13 @@ python scripts/run_conversion.py
 3. Generate STAC Catalog
 python scripts/build_stac_catalog.py
 
-Code Import Adjustments
+#### Code Import Adjustments
 When renaming the package folder or organizing scripts inside the scripts/ directory, update the import statements at the beginning of your scripts (such as main.py and run_conversion.py):
 
-# In scripts/main.py
+In scripts/main.py
 from cellular_space import CellularSpacePy, generate_cellularspace_terrame_like
 from raster_metrics import apply_raster_metrics
 from vector_metrics import apply_vector_metrics
 
-# In scripts/run_conversion.py
+In scripts/run_conversion.py
 from gpkg_to_netcdf import build_netcdf_cube_from_annual_gpkgs
